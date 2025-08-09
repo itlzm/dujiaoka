@@ -8,10 +8,13 @@
  */
 
 return [
+    'dujiaoka_name' => 'DataK',
     'dujiaoka_version' => '2.0.6',
+    'telegram_group_name' => 'Fakeman1024',
+    'text_logo' => 'DataK',
     // 模板集合
     'templates' => [
-        'unicorn' => '官方[unicorn-独角兽]',
+        'unicorn' => '官方[unicorn]',
         'luna' => 'Luna[Julyssn]',
         'hyper' => 'hyper[Bimoe]'
     ],
