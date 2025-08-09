@@ -27,7 +27,7 @@ class StripeController extends PayController
                     \Stripe\Stripe::setApiKey($this->payGateway->merchant_id);
                     $amount = bcmul($this->order->actual_price, 100, 2);
                     $price = $this->order->actual_price;
-                    $usd = bcmul($this->getUsdCurrency($this->order->actual_price), 100, 2);
+                    $gbp = bcmul($this->getGbpCurrency($this->order->actual_price), 100, 2);
                     $orderid = $this->order->order_sn;
                     $pk = $this->payGateway->merchant_id;
                     $return_url = site_url() . $this->payGateway->pay_handleroute . '/return_url/?orderid=' . $this->order->order_sn;
@@ -52,7 +52,6 @@ class StripeController extends PayController
                 position: static;
                 background: none;
             }
-
             .am-offcanvas-bar {
                 position: static;
                 width: auto;
@@ -61,12 +60,10 @@ class StripeController extends PayController
                 -ms-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0);
             }
-
             .am-offcanvas-bar:after {
                 content: none;
             }
         }
-
         @media only screen and (max-width: 640px) {
             .am-offcanvas-bar .am-nav > li > a {
                 color: #ccc;
@@ -74,12 +71,10 @@ class StripeController extends PayController
                 border-top: 1px solid rgba(0, 0, 0, .3);
                 box-shadow: inset 0 1px 0 rgba(255, 255, 255, .05)
             }
-
             .am-offcanvas-bar .am-nav > li > a:hover {
                 background: #404040;
                 color: #fff
             }
-
             .am-offcanvas-bar .am-nav > li.am-nav-header {
                 color: #777;
                 background: #404040;
@@ -89,79 +84,62 @@ class StripeController extends PayController
                 font-weight: 400;
                 font-size: 75%
             }
-
             .am-offcanvas-bar .am-nav > li.am-active > a {
                 background: #1a1a1a;
                 color: #fff;
                 box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3)
             }
-
             .am-offcanvas-bar .am-nav > li + li {
                 margin-top: 0;
             }
         }
-
         .my-head {
             margin-top: 40px;
             text-align: center;
         }
-
         .am-tab-panel {
             text-align: center;
             margin-top: 50px;
             margin-bottom: 50px;
         }
-
         .my-footer {
             border-top: 1px solid #eeeeee;
             padding: 10px 0;
             margin-top: 10px;
             text-align: center;
         }
-
         .panel-title {
             display: inline;
             font-weight: bold;
         }
-
         .display-table {
             display: table;
         }
-
         .display-tr {
             display: table-row;
         }
-
         .display-td {
             display: table-cell;
             vertical-align: middle;
             width: 61%;
         }
-
         .StripeElement {
             box-sizing: border-box;
-
             height: 40px;
-
             padding: 10px 12px;
-
             border: 1px solid transparent;
             border-radius: 4px;
             background-color: white;
-
             box-shadow: 0 1px 3px 0 #e6ebf1;
             -webkit-transition: box-shadow 150ms ease;
             transition: box-shadow 150ms ease;
         }
-
         .StripeElement--focus {
             box-shadow: 0 1px 3px 0 #cfd7df;
         }
-
         .StripeElement--invalid {
             border-color: #fa755a;
         }
-
         .StripeElement--webkit-autofill {
             background-color: #fefde5 !important;
         }
@@ -218,7 +196,6 @@ class StripeController extends PayController
     <div class=\"am-tabs\" data-am-tabs=\"\">
         <ul class=\"am-tabs-nav am-nav am-nav-tabs\">
             <li class=\"am-active\"><a href=\"#alipay\">Alipay 支付宝</a></li>
-            <li class=\"request-wechat-pay\"><a href=\"#wcpay\">微信支付</a></li>
             <li class=\"request-card-pay\"><a href=\"#cardpay\">银行卡支付</a></li>
         </ul>
         <div class=\"am-tabs-bd am-tabs-bd-ofv\"
@@ -226,13 +203,6 @@ class StripeController extends PayController
             <div class=\"am-tab-panel am-active\" id=\"alipay\">
                 <a class=\"am-btn am-btn-lg am-btn-warning am-btn-primary\" id=\"alipaybtn\" href=\"#\">进入支付宝付款</a>
                 <p></p>
-            </div>
-            <div class=\"am-tab-panel am-fade\" id=\"wcpay\">
-                <div class=\"text-align:center; margin:0 auto; width:60%\">
-                    <div class=\"wcpay-qrcode\" style=\"text-align: center; \" data-requested=\"0\">
-                        正在加载中...
-                    </div>
-                </div>
             </div>
             <div class=\"am-tab-panel am-fade\" id=\"cardpay\">
                 <div class=\"text-align:center; margin:0 auto; width:60%\">
@@ -252,7 +222,6 @@ class StripeController extends PayController
                             <div class=\"form-row\">
                             <button class=\"button\">支付</button>
                         </div>
-
                     </form>
                 </div>
                  </div>
@@ -265,10 +234,8 @@ class StripeController extends PayController
     var stripe = Stripe('$pk');
     var source = '';
     // Create a Stripe client.
-
     // Create an instance of Elements.
     var elements = stripe.elements();
-
     // Custom styling can be passed to options when creating an Element.
     // (Note that this demo uses a wider set of styles than the guide below.)
     var style = {
@@ -286,13 +253,10 @@ class StripeController extends PayController
             iconColor: '#fa755a'
         }
     };
-
     // Create an instance of the card Element.
     var card = elements.create('card', {style: style});
-
     // Add an instance of the card Element into the `card-element` <div>.
     card.mount('#card-element');
-
     // Handle real-time validation errors from the card Element.
     card.on('change', function (event) {
         var displayError = document.getElementById('card-errors');
@@ -302,7 +266,6 @@ class StripeController extends PayController
             displayError.textContent = '';
         }
     });
-
     // Handle form submission.
     var form = document.getElementById('payment-form');
     form.addEventListener('submit', function (event) {
@@ -320,7 +283,6 @@ class StripeController extends PayController
             }
         });
     });
-
     // Submit the form with the token ID.
     function stripeTokenHandler(token) {
         // Insert the token ID into the form so it gets submitted to the server
@@ -356,12 +318,11 @@ class StripeController extends PayController
             }
         });
     }
-
     (function () {
         stripe.createSource({
             type: 'alipay',
-            amount: $amount,
-            currency: 'cny',
+            amount: $gbp,
+            currency: 'gbp',
             // 这里你需要渲染出一些用户的信息，不然后期没法知道是谁在付钱
             owner: {
                 name: '$orderid',
@@ -373,15 +334,12 @@ class StripeController extends PayController
             $(\"#alipaybtn\").attr(\"href\", result.source.redirect.url);
         });
     })();
-
     function paymentcheck() {
         $.ajax({
             url: '/pay/stripe/check/?orderid=$orderid&source=' + source,
             type: 'GET',
             success: function (result) {
                 if (result == \"success\") {
-                    $(\".wcpay-qrcode\").html(\"\");
-                    $(\".wcpay-qrcode\").html(\"<p class='am-alert am-alert-success'>支付成功，正在跳转页面</p>\");
                     window.setTimeout(function () {
                         location.href = \"/detail-order-sn/$orderid\"
                     }, 800);
@@ -390,34 +348,7 @@ class StripeController extends PayController
                 }
             }
         });
-    }
-
-    $(\".request-wechat-pay\").click(function () {
-        if ($(\".wcpay-qrcode\").data(\"requested\") == 0) {
-            stripe.createSource({
-                type: 'wechat',
-                amount: $usd,
-                currency: 'usd',
-                owner: {
-                    name: '$orderid'
-                },
-            }).then(function (result) {
-                if (result.source.id) {
-                    $(\".wcpay-qrcode\").html(\"<p class='am-alert am-alert-success'>打开微信 - 扫一扫</p>\");
-                    $(\".wcpay-qrcode\").qrcode(result.source.wechat.qr_code_url);
-                    $(\".wcpay-qrcode\").data(\"requested\", 1);
-                    $(\".wcpay-qrcode\").data(\"sid\", result.source.id);
-                    $(\".wcpay-qrcode\").data(\"scs\", result.source.client_secret);
-                    source = result.source.id;
-                    setTimeout(\"paymentcheck()\", 3000);
-                } else {
-                    alert(\"微信支付加载失败\");
-                    $(\".wcpay-qrcode\").html(\"<p class='am-alert am-alert-danger'>加载失败，请刷新页面。</p>\");
-                }
-                // handle result.error or result.source
-            });
-        }
-    });
+    };
 </script>
 </body>
 </html>";
@@ -449,7 +380,7 @@ class StripeController extends PayController
                 'source' => $data['source'],
             ]);
             if ($source_object->owner->name == $data['orderid']) {
-                $this->orderProcessService->completedOrder($data['orderid'], $source_object->amount / 100, $source_object->id);
+                $this->orderProcessService->completedOrder($data['orderid'], $cacheord->actual_price, $source_object->id);
             }
         }
         return redirect(url('detail-order-sn', ['orderSN' => $data['orderid']]));
@@ -496,8 +427,8 @@ class StripeController extends PayController
                 $payGateway = $this->payService->detail($cacheord->pay_id);
                 \Stripe\Stripe::setApiKey($payGateway -> merchant_pem);
                 $result = \Stripe\Charge::create([
-                    'amount' => bcmul($this->getUsdCurrency($cacheord->actual_price), 100,0),
-                    'currency' => 'usd',
+                    'amount' => bcmul($this->getGbpCurrency($cacheord->actual_price), 100,0),
+                    'currency' => 'gbp',
                     'source' => $data['stripeToken'],
                 ]);
                 if ($result->status == 'succeeded') {
@@ -511,29 +442,25 @@ class StripeController extends PayController
         }
     }
 
+
     /**
-     * 根据RMB获取美元
+     * 根据RMB获取英镑
      * @param $cny
      * @return float|int
      * @throws \Exception
      */
-    public function getUsdCurrency($cny)
+
+    public function getGbpCurrency($cny)
     {
         $client = new Client();
-        $res = $client->get('https://m.cmbchina.com/api/rate/fx-rate');
+        $res = $client->get('https://api.dov.moe/exchange?src=cny&dst=gbp');
         $fxrate = json_decode($res->getBody(), true);
-        $data = $fxrate['body']['data'];
-        if (!isset($data)) {
-            throw new \Exception('汇率接口异常');
+        if ($fxrate['code'] != 1) {
+            $dfFxrate = 0.12;
+        } else {
+            $dfFxrate = $fxrate['data']['value'] * 1.029;
         }
-        $dfFxrate = 0.13;
-        foreach ($data as $item) {
-            if ($item['ccyNbr'] == "美元") {
-                $dfFxrate = bcdiv(100, $item['rtcOfr'], 2);
-                break;
-            }
-        }
-        return bcmul($cny , $dfFxrate , 2);
+        return bcmul($cny , $dfFxrate, 2) + 0.2;
     }
 
 

@@ -145,6 +145,7 @@ class HomeController extends BaseController
             $redisDB = [
                 'host' => $request->input('redis_host'),
                 'password' => $request->input('redis_password', 'null'),
+                'db' => $request->input('redis_db', '0'),
                 'port' => $request->input('redis_port'),
             ];
             $dbConfig['redis']['default'] = array_merge($dbConfig['redis']['default'], $redisDB);
