@@ -8,10 +8,10 @@
  */
 
 return [
-    'dujiaoka_name' => 'DataK',
+    'dujiaoka_name' => 'CVKData',
     'dujiaoka_version' => '2.0.6',
-    'telegram_group_name' => 'Fakeman1024',
-    'text_logo' => 'DataK',
+    'telegram_group_name' => 'cvkdata',
+    'text_logo' => 'CVKData',
     // 模板集合
     'templates' => [
         'unicorn' => '官方[unicorn]',

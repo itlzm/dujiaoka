@@ -685,7 +685,7 @@ TkSuQmCC" />
         </svg>
 
     </h1>
-    <h2>DataK 「{{ config('dujiaoka.dujiaoka_version') }}」</h2>
+    <h2>CVKData 「{{ config('dujiaoka.dujiaoka_version') }}」</h2>
     <div>
 
         <p>每个梦想的路上，一起前行....！
@@ -750,12 +750,12 @@ TkSuQmCC" />
             <div class="form-group">
                 <div class="form-field">
                     <label>网站名称</label>
-                    <input type="title" value="DataK" name="title" required="">
+                    <input type="title" value="CVKData" name="title" required="">
                 </div>
 
                 <div class="form-field">
                     <label>网站url</label>
-                    <input name="app_url" value="" required="" placeholder="例如：https://datak.shop" />
+                    <input name="app_url" value="" required="" placeholder="例如：https://kfk.spiker-aka.shop" />
                 </div>
 
 

@@ -459,8 +459,8 @@ class OrderProcessService
         $mailData = [
             'created_at' => $order->create_at,
             'product_name' => $order->goods->gd_name,
-            'webname' => dujiaoka_config_get('text_logo', config('dujiaoka.text_logo', 'DataK')),
-            'weburl' => config('app.url') ?? 'https://datak.shop',
+            'webname' => dujiaoka_config_get('text_logo', config('dujiaoka.text_logo', 'CVKData')),
+            'weburl' => config('app.url') ?? 'https://kfk.spiker-aka.shop',
             'ord_info' => str_replace(PHP_EOL, '<br/>', $order->info),
             'ord_title' => $order->title,
             'order_id' => $order->order_sn,
@@ -508,8 +508,8 @@ class OrderProcessService
         $mailData = [
             'created_at' => $order->create_at,
             'product_name' => $order->goods->gd_name,
-            'webname' => dujiaoka_config_get('text_logo', config('dujiaoka.text_logo', 'DataK')),
-            'weburl' => config('app.url') ?? 'https://datak.shop',
+            'webname' => dujiaoka_config_get('text_logo', config('dujiaoka.text_logo', 'CVKData')),
+            'weburl' => config('app.url') ?? 'https://kfk.spiker-aka.shop',
             'ord_info' => implode('<br/>', $carmisInfo),
             'ord_title' => $order->title,
             'order_id' => $order->order_sn,

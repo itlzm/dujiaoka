@@ -34,7 +34,7 @@ class OrderUpdated
         $order = [
             'created_at' => date('Y-m-d H:i'),
             'ord_title' => $event->order->title,
-            'webname' => $sysCache['text_logo'] ?? config('dujiaoka.text_logo', 'DataK'),
+            'webname' => $sysCache['text_logo'] ?? config('dujiaoka.text_logo', 'CVKData'),
             'weburl' => config('app.url'),
             'order_id' => $event->order->order_sn,
             'ord_price' => $event->order->actual_price,

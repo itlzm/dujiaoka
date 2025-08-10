@@ -11,7 +11,7 @@ return [
     | login page.
     |
     */
-    'name' => 'DataK',
+    'name' => 'CVKData',
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ return [
     | `img` tag, eg '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo' => '<img src="/vendor/dujiaoka-admin/images/logo.jpg" width="35"> &nbsp;DataK',
+    'logo' => '<img src="/vendor/dujiaoka-admin/images/logo.jpg" width="35"> &nbsp;CVKData',
 
     /*
     |--------------------------------------------------------------------------
@@ -88,7 +88,7 @@ return [
     | Html title for all pages.
     |
     */
-    'title' => 'DataK - 后台控制中心',
+    'title' => 'CVKData - 后台控制中心',
 
     /*
     |--------------------------------------------------------------------------
