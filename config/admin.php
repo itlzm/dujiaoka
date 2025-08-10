@@ -357,8 +357,4 @@ return [
         'dir' => base_path('dcat-admin-extensions'),
     ],
 
-    'footer' => [
-        'title' => '© 2025 DataK',
-        'url' => '/',
-    ]
 ];
